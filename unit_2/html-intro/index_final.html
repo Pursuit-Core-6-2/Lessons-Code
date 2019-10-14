@@ -1,0 +1,25 @@
+<html>
+<head>
+  <title>My First Web Page</title>
+
+</head>
+<body>
+  <img src="https://gokitty.com/uploads/breed_photo/medium/PR--5beb43ca8dda5.jpg" />
+  <h1>Hi There!</h1>
+  <p>Welcome to my <strong>first</strong> web page</p>
+  <div id='list'>
+  </div>
+  <script>
+      let container = document.querySelector('#list');
+      let list = document.createElement('ul');
+      let arr = ['Yellow', 'Blue', 'Red', 'White']
+      for (let color of arr) {
+        let item = document.createElement('li');
+        item.innerText = color;
+        list.appendChild(item);
+      }
+      container.appendChild(list)
+      console.log(container)
+  </script>
+</body>
+</html>

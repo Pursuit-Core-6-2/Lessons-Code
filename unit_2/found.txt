@@ -1,0 +1,5 @@
+./css_position_diplay_zindex/lesson_plan.md
+./html-intro/lesson_plan.md
+./css_selectors/lesson_plan.md
+./events/lesson_plan.md
+./dom_manipulation/lesson_plan.md

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="pizza_ordering.js"></script>
+  <script src="enableDOMQueue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <img src="https://images.vexels.com/media/users/3/131778/isolated/lists/2f58b79f41ddd2cf40e188c533a7f751-pizza-logo-template.png" alt="pizza logo" />
+  <h1>Pizza Ordering App</h1> 
+  <form>
+    <h2>Customer Info</h2>
+    <div>
+      <label for="first_name">First Name:</label>
+      <input id="first_name" type="text" placeholder="Jhon" name="first_name">
+    </div>
+    <div>
+      <label for="last_name">Last Name:</label>
+      <input id="last_name" type="text" placeholder="Snow" name="last_name">
+    </div>
+    <div>
+      <label for="address">Address:</label>
+      <input id="address" type="text" placeholder="1234 Main St, 2nd Fl, Hometown, NY, 12345" name="address">
+    </div>
+    <h2>Build Your Pizza</h2>
+    <div>
+      <label><strong> Pie Size: </strong></label>
+      <input id="small" type="radio" value="small" name="size">
+      <label for="small">Small</label>
+      
+      <input id="medium" type="radio" value="medium" name="size">
+      <label for="medium">Medium</label>
+      
+      <input id="big" type="radio" value="big" name="size">
+      <label for="big">Big</label>
+    </div>
+    <div>
+      <label for="crust"><strong>Crust:</strong></label>
+      <select id="crust" name="crust">
+        <option value="any">Any</option>
+        <option value="thin">Thin</option>
+        <option value="thick">Thick</option>
+      </select>
+    </div>
+    <div>
+      <label><strong> Toppings: </strong></label>
+
+      <input id="anchovies" type="checkbox" name="topping" value="1" /> 
+      <label for="anchovies">Anchovies</label>
+
+      <input id="ham" type="checkbox" name="topping" value="2" />
+      <label for="ham">Ham</label>
+
+      <input id="pepperoni" type="checkbox" name="topping" value="3" /> 
+      <label for="pepperoni">Pepperoni</label>
+
+      <input id="sausage" type="checkbox" name="topping" value="4" /> 
+      <label for="sausage">Sausage</label>
+
+      <input id="broccoli" type="checkbox" name="topping" value="5" /> 
+      <label for="broccoli">Broccoli</label>
+
+      <input id="green_olives" type="checkbox" name="topping" value="6" /> 
+      <label for="green_olives">Green Olives</label>
+
+      <input id="mushrooms" type="checkbox" name="topping" value="7" /> 
+      <label for="mushrooms">Mushrooms</label>
+
+      <input id="roasted_garlic" type="checkbox" name="topping" value="8" /> 
+      <label for="roasted_garlic">Roasted Garlic</label>
+    </div>
+    <div>
+      <label for="special_instructions"><strong>Special Instructions: </strong></label><br />
+      <textarea id="special_instructions" name="special_instructions"></textarea>
+    </div>
+    <input type="submit" value="Enqueue">
+  </form>
+  <hr>
+  <div>
+    <h2>Orders</h2>
+    <ol id="orders_list"></ol>
+    <button id="dequeue_btn">Dequeue</button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+div {
+  width: 350px;
+  margin: 10px;
+  border: 5px groove gray;
+  padding: 10px;
+}
+
+.heading {
+  color: red;
+}
+
+#second-heading {
+  color: blueviolet;
+}
+
+h2 + ol {
+  color: blue;
+}
+
+img[alt*=" "] {
+  border: 10px solid pink;
+  border-radius: 50%;
+}
+
+
+a:visited {
+  color: green;
+}
+
+a:hover {
+  color: yellow;
+}
+
+p::first-letter {
+  font-size: 40px;
+  color: magenta;
+}
+
+
+

@@ -1,0 +1,66 @@
+.bottom {
+  position: fixed;
+  bottom: 0px;
+  background-color: yellow;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items:  center;
+}
+
+.main{
+  display: grid;
+  grid-template-columns: 1fr 20px 1fr
+}
+
+.skills {
+  grid-column-start: 3;
+}
+
+.sun {
+  position: absolute;
+  z-index: 1;
+  right:0;
+  top:0;
+}
+
+h1 {
+  margin: 5% auto;
+
+}
+
+.head {
+  display: grid;
+  grid-template-columns: 1fr 190px;
+}
+
+.content {
+  margin-bottom: 8%;
+}
+
+img:hover {
+  display: none;
+}
+
+body p:hover {
+  background-color: pink;
+}
+
+h1:hover, ul:hover, ol:hover, h3:hover {
+  background-color: green;
+}
+
+* {
+  width: 20px;
+  position: relative;
+   top: 600px; 
+  bottom: 2px;
+  left: 100px;
+  right: 50px;
+}
+
+body {
+  display: flex;
+  justify-content: space-around;
+}

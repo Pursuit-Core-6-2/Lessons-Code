@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="hangman.js"></script>
+    <script src="index.js"></script>
+    <title>Hangman</title>
+</head>
+<body>
+    <h1>Hangman</h1>
+    <img id='hangmanImage' src="https://www.oligalma.com/downloads/images/hangman/hangman/0.jpg" alt="hangmanImage">
+    <p id='gameMessagePara'>Welcome to Hangman</p>
+    <p id='currentDisplayWord'>_ _ _ _</p>
+    <p id='guessedLettersPara'></p>
+    <p id='guessesRemainingPara'></p>
+    <form id='form'>
+        <fieldset id='fieldset'>
+            <p id>
+                    Enter your guess: 
+                    <input type="text" id='letterInput' maxlength="1">
+                    <button id='guessButton'>Submit</button>
+            </p>                        
+        </fieldset>
+    </form>
+</body>
+</html>

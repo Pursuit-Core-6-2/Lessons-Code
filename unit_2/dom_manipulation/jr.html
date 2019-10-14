@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+  <body>
+    <script>
+      let selectList = document.createElement("select");
+      document.body.appendChild(selectList);
+      console.log("select list", selectList);
+      for (let i = 0; i < 100; i++) {
+        let option = document.createElement("option");
+        option.value = `${i}`;
+        option.text = `${i}`;
+        selectList.appendChild(option);
+      }
+    </script>
+​
+    <p id="sample_id">This is random text</p>
+  </body>
+</html>

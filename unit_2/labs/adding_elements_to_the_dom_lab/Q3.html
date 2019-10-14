@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Q3 List of Users</h1>
+  <script>
+    let users = [
+      {
+        "gender": "female",
+        "name": {
+          "title": "mademoiselle",
+          "first": "ruth",
+          "last": "nicolas"
+        },
+        "nat": "CH"
+      },
+      {
+        "gender": "female",
+        "name": {
+          "title": "miss",
+          "first": "رها",
+          "last": "سلطانی نژاد"
+        },
+        "nat": "IR"
+      },
+      {
+        "gender": "female",
+        "name": {
+          "title": "mrs",
+          "first": "patricia",
+          "last": "hale"
+        },
+        "nat": "GB"
+      },
+      {
+        "gender": "male",
+        "name": {
+          "title": "mr",
+          "first": "fernando",
+          "last": "cooper"
+        },
+        "nat": "US"
+      },
+      {
+        "gender": "female",
+        "name": {
+          "title": "mrs",
+          "first": "یسنا",
+          "last": "صدر"
+        },
+        "nat": "IR"
+      },
+      {
+        "gender": "male",
+        "name": {
+          "title": "mr",
+          "first": "eino",
+          "last": "tuomala"
+        },
+        "nat": "FI"
+      },
+      {
+        "gender": "female",
+        "name": {
+          "title": "ms",
+          "first": "gonca",
+          "last": "özkara"
+        },
+        "nat": "TR"
+      },
+      {
+        "gender": "male",
+        "name": {
+          "title": "mr",
+          "first": "kyle",
+          "last": "castillo"
+        },
+        "nat": "US"
+      },
+      {
+        "gender": "female",
+        "name": {
+          "title": "miss",
+          "first": "olivia",
+          "last": "kumar"
+        },
+        "nat": "NZ"
+      },
+      {
+        "gender": "male",
+        "name": {
+          "title": "monsieur",
+          "first": "raymond",
+          "last": "durand"
+        },
+        "nat": "CH"
+      }
+    ]
+    let ul = document.createElement('ul');
+    for (let person of users) {
+      let li = document.createElement('li')
+      li.innerText = `${person.nat} | ${person.name.first} ${person.name.last}`;
+      ul.appendChild(li)
+    }
+    document.body.appendChild(ul)
+  </script>
+</body>
+
+</html>

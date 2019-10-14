@@ -1,0 +1,12 @@
+./week_2/strings/strings_lesson_plan.md
+./week_2/loops/lesson_plan.md
+./week_5/classes/lesson_plan.md
+./week_5/constructor_functions/lesson_plan.md
+./week_4/callbacks/review_plan.md
+./week_4/callbacks/lesson_plan.md
+./week_4/objects/objects_lesson_plan.md
+./week_4/array_methods/lesson_plan.md
+./week_4/functions/functions_lesson_plan.md
+./week_3/review/review_plan.md
+./week_3/arrays/lesson_plan.md
+./week_1/variables/lesson_plan.md

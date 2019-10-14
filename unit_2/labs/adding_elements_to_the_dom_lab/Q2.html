@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Q1 List of People</h1>
+  <ul></ul>
+  <script>
+    let ul = document.querySelector('ul');
+    let people = [
+      { "name": "Anne" },
+      { "name": "Bri" },
+      { "name": "Chaz" },
+      { "name": "Darlene" }
+    ]
+    for(let person of people) {
+      let li = document.createElement('li')
+      li.innerText = person.name;
+      ul.appendChild(li)
+    }
+  </script>
+</body>
+
+</html>

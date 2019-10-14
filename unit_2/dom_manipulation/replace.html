@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <body>
+    <div id="div1">
+      <p id="para1">This is the first paragraph</p>
+      <p id="para2">This is the second paragraph</p>
+      <p id="para3">This is the second paragraph</p>
+    </div>
+    <button onclick="replaceFirstParagraph()">Replace the first paragraph</button>
+    <script type="text/javascript">
+      function replaceFirstParagraph() {
+        let firstPara = document.querySelector("p")
+        let newNode = document.createElement("p")
+        newNode.innerText = "Here's a new random number: " + Math.random()
+        firstPara.parentNode.replaceChild(newNode, firstPara)
+      }
+    </script>
+  </body>
+</html>

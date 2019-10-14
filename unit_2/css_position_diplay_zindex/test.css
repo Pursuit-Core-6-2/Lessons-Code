@@ -1,0 +1,33 @@
+.outer-container {
+  display: block;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* z-index: 1; */
+}
+
+.inner-container {
+  display: block;
+}
+
+.first {
+  background-color: yellow;
+  margin: 30px;
+}
+
+.inner-container {
+  background-color: green;
+  position: fixed;
+}
+
+.second {
+  background-color: blue;
+  margin: 60px;
+}
+
+.third {
+  background-color: red;
+  margin: 90px;
+}

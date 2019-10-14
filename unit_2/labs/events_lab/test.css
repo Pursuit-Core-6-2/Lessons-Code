@@ -1,0 +1,17 @@
+div {
+  width: 350px;
+  margin: 10px;
+  border: 5px solid gray;
+  padding: 10px;
+}
+
+.text-red {
+ color: red
+}
+
+.item {
+  text-decoration: underline;
+}
+/* p, li {
+  color: red
+} */

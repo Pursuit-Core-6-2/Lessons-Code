@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <body>
+    <p id="para1">This is the first paragraph</p>
+    <button onclick="replaceFirstParagraph()">Replace the first paragraph</button>
+    <script type="text/javascript">
+      function changeNodeInnerText(node, text) {
+        node.innerText = text
+      }
+
+      function replaceFirstParagraph() {
+        let firstPara = document.querySelector("p")
+        changeNodeInnerText(firstPara, "Hello Word")
+      }
+    </script>
+  </body>
+</html>

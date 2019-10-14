@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <body>
+    <h1>Today's Cubs Lineup</h1>
+    <ol id="lineupList">
+    </ol>
+    <script>
+      class Player {
+        constructor(name, hand, position) {
+          this.name = name
+          this.hand = hand
+          this.position = position
+        }
+        getDescription() {
+          return `${this.name} (${this.hand} ${this.position})`
+        }
+      }
+
+      let allPlayers = [
+        new Player("Jason Heyward", "L", "RF"),
+        new Player("Nicholas Castellanos", "R", "RF"),
+        new Player("Kris Bryant", "R", "3B"),
+        new Player("Anthony Rizzo", "L", "1B"),
+        new Player("Javier Baez", "R", "SS"),
+        new Player("Kyle Schwarber", "L", "LF"),
+        new Player("Ian Happ", "S", "LF"),
+        new Player("Victor Caratini", "S", "LF"),
+        new Player("Jon Lester", "L", "P"),
+      ]
+
+      let listElement = document.getElementById("lineupList")
+
+      for (let player of allPlayers) {
+        let newPlayerListItem = document.createElement("li")
+        newPlayerListItem.innerText = player.getDescription()
+        listElement.appendChild(newPlayerListItem)
+      }
+    </script>
+  </body>
+</html>

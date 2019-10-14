@@ -1,0 +1,18 @@
+#container div {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: lightblue;
+  border: 2px solid red;
+}
+
+/* #one {
+  grid-row: 2;
+  grid-column: 2 / 3 ;
+} */
+
+#container {
+  display:  grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, 100px);
+  grid-auto-rows: 50px 70px 50px 200px;
+}

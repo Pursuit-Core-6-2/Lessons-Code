@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <body>
+    <p id="para1">This is the first paragraph</p>
+    <button onclick="replaceFirstParagraph()">Replace the first paragraph</button>
+    <script type="text/javascript">
+      function changeNodeInnerText(node, text) {
+        let newNode = node.cloneNode();
+        newNode.innerText = text
+        return newNode;
+      }
+
+      function replaceFirstParagraph() {
+        let firstPara = document.querySelector("p")
+        let newNode = changeNodeInnerText(firstPara, "Hello Word")
+        firstPara.parentNode.replaceChild(newNode, firstPara)
+      }
+    </script>
+  </body>
+</html>

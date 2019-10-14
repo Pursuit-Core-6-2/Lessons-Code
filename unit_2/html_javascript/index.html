@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Javascript + HTML</title>
+  </head>
+  <body>
+    <h1>My Website</h1>
+    <p id = "welcome_para">Welcome to my website</p>
+    <p id = "last_para">Thank you for visiting</p>
+    <script>
+      const evtSource = new EventSource("https://cloud-sse.iexapis.com/stable/stocksUSNoUTP?symbols=FB&token=pk_859f45d4b81449e39bd1b5069f9db53a")
+evtSource.onmessage(e => {
+  console.log(e.data);
+})
+    </script>
+  </body>
+</html>

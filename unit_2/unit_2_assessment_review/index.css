@@ -1,0 +1,57 @@
+body {
+  font-family: monospace;
+  background-color: lavender;
+}
+
+.header {
+  height: 150px;
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: skyblue;
+  margin-bottom: 20px;
+  font-size: 2vw;
+}
+
+.header h1 {
+  margin-bottom: 30px;
+  padding: 10px;
+}
+
+img {
+  max-height: 90px;
+}
+
+.main {
+  width: 60%;
+  margin: 0 auto;
+}
+
+input[name='review'] {
+  width: 400px;
+}
+
+#review-form {
+  display: none;
+}
+
+/*871*/
+@media only screen and (max-width: 871px) {
+  .header {
+    display: block;
+    height: auto;
+    text-align: center;
+  }
+
+  input[name='review'] {
+    width: auto;
+  }
+}
+
+@media only screen and (max-width: 446px) {
+  .header {
+    /* font-size: 1vw; */
+  }
+}

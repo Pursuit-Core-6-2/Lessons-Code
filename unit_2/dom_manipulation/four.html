@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <body>
+    <div id="div1">
+      <p id="para1">This is the first paragraph</p>
+      <p id="para2">This is the second paragraph</p>
+    </div>
+    <button onclick="deleteFirstParagraph()">Delete the first paragraph</button>
+    <body>
+      <script type="text/javascript">
+      function deleteFirstParagraph() {
+        let divisionOne = document.getElementById("div1")
+        let paraOne = document.getElementById("para1")
+        divisionOne.removeChild(paraOne)
+      }
+      </script>
+    </body>
+  </body>
+</html>
