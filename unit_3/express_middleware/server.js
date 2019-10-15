@@ -79,17 +79,7 @@ const availableUsername = (req, res, next) => {
   next();
 }
 
-app.post('/signup', (req, res, next) => {
-  let data = ''
-  req.on('data', chunk => {
-    console.log(chunk.toString())
-    data += chunk
-  });
-  req.on('end', () => {
-    console.log(data);
-  })
-  res.send(data);
-})//validateInput, availableUsername, welcomeNewUser)
+app.post('/signup', validateInput, availableUsername, welcomeNewUser)
 
 app.listen(port, () => {
   console.log(`http://localhost:${port}`)
