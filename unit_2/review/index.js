@@ -19,15 +19,22 @@ const fetchDogImage = async () => {
 }
 
 const displayImage = (url, species) => {
-  let img = document.createElement('img');
-  img.src = url;
+  let oldImg = document.querySelector(`#${species}-img`)
 
-  if (species === "cat") {
-    let catDiv = document.querySelector('#cat-div')
-    catDiv.appendChild(img);
+  if (oldImg) {
+    oldImg.src = url;
   } else {
-    let dogDiv = document.querySelector('#dog-div')
-    dogDiv.appendChild(img);
+    let img = document.createElement('img');
+    img.id = `${species}-img`
+    img.src = url;
+
+    if (species === "cat") {
+      let catDiv = document.querySelector('#cat-div')
+      catDiv.appendChild(img);
+    } else {
+      let dogDiv = document.querySelector('#dog-div')
+      dogDiv.appendChild(img);
+    }
   }
 }
 
@@ -84,12 +91,28 @@ const pickCat = () => {
     newCatCounterP.innerText = catCounter;
     catDiv.replaceChild(newCatCounterP, oldCatCounterP);
   }
-
-
-  console.log('catCounter', catCounter)
 }
 
 const pickDog = () => {
   dogCounter = dogCounter + 1;
+
+  let dogDiv = document.querySelector('#dog-div')
+
+  let oldDogCounterP = document.querySelector('#dog-counter');
+
+  let newDogCounterP = document.createElement('p')
+  newDogCounterP.id = 'dog-counter'
+
+  if (!oldDogCounterP) {
+    newDogCounterP.innerText = dogCounter;
+    dogDiv.appendChild(newDogCounterP);
+  } else {
+    newDogCounterP.innerText = dogCounter;
+    dogDiv.replaceChild(newDogCounterP, oldDogCounterP);
+  }
+
+  loadCat();
+  fetchDogImage();
+
   console.log('dogCounter', dogCounter)
 }
