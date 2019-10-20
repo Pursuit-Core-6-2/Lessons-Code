@@ -30,10 +30,10 @@ const displayImage = (url, species) => {
 
     if (species === "cat") {
       let catDiv = document.querySelector('#cat-div')
-      catDiv.appendChild(img);
+      catDiv.prepend(img);
     } else {
       let dogDiv = document.querySelector('#dog-div')
-      dogDiv.appendChild(img);
+      dogDiv.prepend(img);
     }
   }
 }
@@ -59,18 +59,23 @@ const loadCat = async () => {
 }
 
 const createButton = (species) => {
-  let button = document.createElement('button')
+  let prevButton = document.querySelector(`#${species}-btn`)
 
-  if (species === 'dog') {
-    button.innerText = "Dog is the cutest!"
-    button.addEventListener("click", pickDog)
-    let dogDiv = document.querySelector('#dog-div')
-    dogDiv.appendChild(button);
-  } else {
-    button.innerText = "Cat is the cutest!"
-    button.addEventListener("click", pickCat)
-    let catDiv = document.querySelector('#cat-div')
-    catDiv.appendChild(button);
+  if (!prevButton) {
+    let button = document.createElement('button')
+    button.id = `${species}-btn`;
+
+    if (species === 'dog') {
+      button.innerText = "Dog is the cutest!"
+      button.addEventListener("click", pickDog)
+      let dogDiv = document.querySelector('#dog-div')
+      dogDiv.appendChild(button);
+    } else {
+      button.innerText = "Cat is the cutest!"
+      button.addEventListener("click", pickCat)
+      let catDiv = document.querySelector('#cat-div')
+      catDiv.appendChild(button);
+    }
   }
 }
 
@@ -91,6 +96,9 @@ const pickCat = () => {
     newCatCounterP.innerText = catCounter;
     catDiv.replaceChild(newCatCounterP, oldCatCounterP);
   }
+
+  loadCat();
+  fetchDogImage();
 }
 
 const pickDog = () => {
