@@ -1,0 +1,11 @@
+.post {
+  border: 1px solid blue
+}
+
+.post img {
+  width: 300px;
+}
+
+h1 {
+  color: red;
+}
