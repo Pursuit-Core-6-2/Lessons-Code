@@ -2,28 +2,36 @@ import React, { Component } from 'react';
 import axios from 'axios';
 // import Selector from './Selector';
 import './App.css';
-import BreedSelector from './Components/BreedSelector';
-import Dog from './Components/Dog';
+import DogForm from './Components/DogForm';
+import DogList from './Components/DogList';
+import Spinner from './Components/Spinner'
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      url: '',
+      urls: [],
+      picturesLoading: true
     }
   }
 
   // Loads an image when the component mounts
   componentDidMount() {
-    this.getDogPicture()
+    this.getDogPictures()
   }
 
-  getDogPicture = async (selectedBreed) => {
+  getDogPictures = async (selectedBreed, numOfDogs) => {
     // const { selectedBreed } = this.state
-    let dogAPIURL = "https://dog.ceo/api/breeds/image/random"
+
+
+    this.setState({
+      picturesLoading: true
+    })
+
+    let dogAPIURL = `https://dog.ceo/api/breeds/image/random/${numOfDogs}`
 
     if (selectedBreed) {
-      dogAPIURL = `https://dog.ceo/api/breed/${selectedBreed}/images/random`
+      dogAPIURL = `https://dog.ceo/api/breed/${selectedBreed}/images/random/${numOfDogs}`
     }
 
     // axios request using try, catch and async, await
@@ -31,17 +39,24 @@ class App extends Component {
       const { data } = await axios.get(dogAPIURL)
       console.log(data)
       this.setState({
-        url: data.message
+        urls: data.message,
       })
+
+      this.stopSpinner();
 
     } catch (error) {
       console.log('err: ', error)
     }
+  }
 
+  stopSpinner = () => {
+    this.setState({
+      picturesLoading: false
+    })
   }
 
   render() {
-    const { url, breeds, selectedBreed } = this.state
+    const { urls, picturesLoading } = this.state
 
     // Using nested destructuring
     // const { 
@@ -50,11 +65,16 @@ class App extends Component {
     //   },
     //   getDogPicture,
     // } = this
+
     return (
       <div className="App">
         <h1>Random Dog Pictures v1</h1>
-        <BreedSelector getDogPicture={this.getDogPicture} />
-        <Dog url={url} />
+        <DogForm getDogPictures={this.getDogPictures} />
+        {
+          picturesLoading
+            ? <Spinner />
+            : <DogList urls={urls} stopSpinner={this.stopSpinner} />
+        }
       </div>
     )
   }

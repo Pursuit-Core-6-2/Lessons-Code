@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class BreedSelector extends Component {
+class DogForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
       breeds: [],
-      selectedBreed: ''
+      selectedBreed: '',
+      numOfDogs: ''
     }
   }
 
@@ -16,11 +17,12 @@ class BreedSelector extends Component {
 
   handleBreedChange = (event) => {
     const newBreed = event.target.value
+    const { numOfDogs } = this.state;
     this.setState({
       selectedBreed: newBreed
     })
 
-    this.props.getDogPicture(newBreed);
+    this.props.getDogPictures(newBreed, numOfDogs);
   }
 
   // Instead of .map in render. This function can be invoked
@@ -37,7 +39,8 @@ class BreedSelector extends Component {
 
   resetSelect = (event) => {
     this.setState({
-      selectedBreed: ''
+      selectedBreed: '',
+      numOfDogs: '1'
     })
   }
 
@@ -61,13 +64,19 @@ class BreedSelector extends Component {
   }
 
   handleNewDogButton = (event) => {
-    const { getDogPicture } = this.props;
-    const { selectedBreed } = this.state;
-    getDogPicture(selectedBreed)
+    const { getDogPictures } = this.props;
+    const { selectedBreed, numOfDogs } = this.state;
+    getDogPictures(selectedBreed, numOfDogs)
+  }
+
+  handleNumOfDogs = (e) => {
+    this.setState({
+      numOfDogs: e.target.value
+    })
   }
 
   render() {
-    const { breeds, selectedBreed } = this.state;
+    const { breeds, selectedBreed, numOfDogs } = this.state;
 
     return (
       <>
@@ -81,6 +90,7 @@ class BreedSelector extends Component {
             // or call this.populateSelect()
           }
         </select>
+        <input type="number" min="1" max="10" onChange={this.handleNumOfDogs} value={numOfDogs} />
         <button onClick={this.handleNewDogButton}>New Dog</button>
         <button onClick={this.resetSelect}>Reset</button>
       </>
@@ -88,4 +98,4 @@ class BreedSelector extends Component {
   }
 }
 
-export default BreedSelector;
+export default DogForm;
