@@ -1,8 +1,8 @@
 # Pursuit Core Web 6.2 Lessons' Code
 
-This repository contains the JavaScript programs and code snippets written by [Alejo](https://github.com/alejo4373) during lessons.
+This repository contains the JavaScript programs and code snippets written by [Alejo](https://github.com/alejo4373) and students during lessons.
 
-The purpose of this repository is to share the written code with the class so that access, review and study of the code is possible. Also so that Alejo don't have to be sharing code snippets on Slack (which sucks).
+The purpose of this repository is to share the code written during lesson with the class so that access, review and study of it is possible. Also so that Alejo doesn't have to be sharing code snippets on Slack (which sucks).
 
 This repo is organized by units and lessons. Every unit is a top level folder with sub-folders for every lesson.
 
