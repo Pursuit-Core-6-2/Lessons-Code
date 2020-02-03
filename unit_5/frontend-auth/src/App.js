@@ -11,17 +11,37 @@ import axios from 'axios';
 class App extends React.Component {
   state = {
     user: null,
-    isUserLoggedIn: false
+    isUserLoggedIn: false,
+    loadingUser: true
   }
 
   setUser = (user) => {
     console.log('setting user to app state')
     this.setState({
       user: user,
-      isUserLoggedIn: true
+      isUserLoggedIn: true, // Since the first thing we do on componentDidMount is to check if the user is logged in in our backend
+      loadingUser: false
     })
   }
 
+  componentDidMount() {
+    this.checkUserLoggedIn()
+  }
+
+  checkUserLoggedIn = async () => {
+    console.log('Checking if user logged in')
+    try {
+      const { data } = await axios.get("/auth/isUserLoggedIn")
+      this.setUser(data.payload)
+    } catch (err) {
+      // User does not have an active session in the backend. User is logged out so set loadingUser to false.
+      if (err.message.includes(401)) {
+        this.setState({
+          loadingUser: false
+        })
+      }
+    }
+  }
 
   logoutUser = async () => {
     console.log('logging out user')
@@ -47,8 +67,12 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.props)
-    const { isUserLoggedIn } = this.state;
+    const { isUserLoggedIn, loadingUser } = this.state;
+
+    // if (loadingUser) { // If checking if user is authenticated has not completed display a loading animation otherwise render the app
+    //   return <div>loading...</div>
+    // }
+
     return (
       <div className="App">
         <Navbar

@@ -10,10 +10,6 @@ class AuthContainer extends Component {
     password: ''
   }
 
-  componentDidMount() {
-    this.checkUserLoggedIn()
-  }
-
   handleChange = (e) => {
     const inputName = e.target.name;
     const inputValue = e.target.value;
@@ -21,17 +17,6 @@ class AuthContainer extends Component {
       [inputName]: inputValue
     })
   }
-
-  checkUserLoggedIn = async () => {
-    console.log('Checking if user logged in')
-    try {
-      const { data } = await axios.get("/auth/isUserLoggedIn")
-      this.props.setUser(data.payload)
-    } catch (err) {
-      console.log('ERROR', err)
-    }
-  }
-
 
   signupUser = async () => {
     // Make network request to /auth/signup to signup user
@@ -54,7 +39,6 @@ class AuthContainer extends Component {
 
       const user = data.payload
       this.props.setUser(user)
-      this.props.history.push('/users') // Redirect user to / (home)
 
     } catch (err) {
       console.log('ERROR', err)
