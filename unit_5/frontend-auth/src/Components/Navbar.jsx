@@ -6,8 +6,8 @@ const Navbar = ({ logoutUser, isUserLoggedIn }) => {
     return (
       <nav>
         <Link to="/" >Home</Link>{" "}
-        <Link to="/users">Users</Link>
-        <Link to="/profile">Profile</Link>
+        <Link to="/users">Users</Link>{" "}
+        <Link to="/profile">Profile</Link>{" "}
         <button onClick={logoutUser}>Log-out</button>
       </nav>
     )
