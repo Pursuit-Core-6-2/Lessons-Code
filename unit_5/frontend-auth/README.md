@@ -1,68 +1,33 @@
+# Front-End User Authentication Approach in conjuntion with an Express Server
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+**Notes:**
 
-### `npm start`
+* Redirect user when login successful to `/profile`. This is accomplished by checking `isUserLoggedIn` which comes from `App` through props into `AuthContainer`. If `isUserLoggedIn` is `true` then redirect the user.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* Redirect user when trying to access `/login` or `/signup` to `/profile` if they are already logged in. This is accomplished by passing `isUserLoggedIn` from the App state to the `AuthContainer`. If the user is logged in he/she will be redirected to `/profile`
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+* Redirect user when trying to access a protected route (`/profile` or `/users`) without being authenticated to `/login`. This is accomplished by our `PrivateRoute` component. This component checks if we have a user in the App state, if so it renders its child component otherwise it redirects to `/login`
 
-### `npm test`
+* Ideally if a user goes to a private route like `/profile` without being authenticated we can take note of that and upon successful login redirect back to the place they came from (referrer) say `/profile`. This can be accomplished by passing an object to the `to` prop or `Redirect` with two properties `pathname` and state like so: 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```jsx
+<Redirect 
+  to={{
+    pathname: "/login",
+    state: { referrer: props.location.pathname }
+  }} 
+/>
+```
 
-### `npm run build`
+* Redirect user when logging out to home `/`. This is accomplished by `history.push('/')` in `App.logoutUser()`. The `history` prop is not passed to App because the App Component is not rendered within any route. Calling `withRouter(App)` gives the `App` access to route props like `history`.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+* If we have our private route without providing a referrer when redirecting, if a user is in a protected route like `/users` and the page is refreshed, because the private route is checking `isUserLoggedIn`. `isUserLoggedIn` will takes some time and its in the `App.componentDidMount` 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+* **Puzzle**
+  * While being in `/users` if the users refreshes the page because `/users` is a private route and the user is not logged in in our state yet (because `App` hasn't mounted and the net request takes time) the user gets redirected to `/login`. Being in `/login` since it is rendered by `AuthContainer` and `AuthContainer` checks if the user is logged in by looking at `isUserLoggedIn` (come in props sent from `App`), once the app finishes mounting and the user has been set in state due to an active session in the backend `AuthContainer` will receive `isUserLoggedIn` as `true` and will redirect the user to `/profile`. This is less than ideal because the user intended to go to `/users` and ended in `/profile`. I think the user should neve have been taken to `/login` and instead sort of wait for the `checkUserLoggedIn` and be shown `/users` if the user is authenticated.
+  * Should the user be redirected to `/login` without the `checkUserLoggedIn` having finished with succes or failure?
+  * **One Fix**: Implementation of `Redirect` with `to` as object and `referrer` property is necessary to fix this.
