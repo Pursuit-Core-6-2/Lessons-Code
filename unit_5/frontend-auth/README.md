@@ -9,7 +9,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 * Redirect user when trying to access `/login` or `/signup` to `/profile` if they are already logged in. This is accomplished by passing `isUserLoggedIn` from the App state to the `AuthContainer`. If the user is logged in he/she will be redirected to `/profile`
 
-* Redirect user when trying to access a protected route (`/profile` or `/users`) without being authenticated to `/login`. This is accomplished by our `PrivateRoute` component. This component checks if we have a user in the App state, if so it renders its child component otherwise it redirects to `/login`
+* Redirect an unauthenticated user when trying to access a protected route (`/profile` or `/users`) to `/login`. This is accomplished by our `PrivateRoute` component. This component checks if we have a user in the App state, if so it renders its child component otherwise it redirects to `/login`
 
 * Ideally if a user goes to a private route like `/profile` without being authenticated we can take note of that and upon successful login redirect back to the place they came from (referrer) say `/profile`. This can be accomplished by passing an object to the `to` prop or `Redirect` with two properties `pathname` and state like so: 
 
