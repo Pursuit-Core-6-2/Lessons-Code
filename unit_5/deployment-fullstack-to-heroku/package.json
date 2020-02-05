@@ -1,0 +1,21 @@
+{
+  "name": "deployment-fullstack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd backend-auth && npm start",
+    "heroku-prebuild": "cd backend-auth && npm install && cd ../frontend-auth && npm install && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alejo4373/deployment-fullstack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alejo4373/deployment-fullstack/issues"
+  },
+  "homepage": "https://github.com/alejo4373/deployment-fullstack#readme"
+}
